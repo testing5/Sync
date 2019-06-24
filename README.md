@@ -2,6 +2,8 @@
 
 **Sync** eases your everyday job of parsing a JSON response and syncing it with Core Data. **Sync** is a lightweight Swift library that uses a convention-over-configuration paradigm to facilitate your workflow.
 
+**Added encrypted-core-data integration**
+
 <div align = "center">
   <a href="https://cocoapods.org/pods/Sync">
 <img src="https://img.shields.io/cocoapods/v/Sync.svg?style=flat" />
