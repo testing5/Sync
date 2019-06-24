@@ -449,7 +449,7 @@ extension NSPersistentStoreCoordinator {
                 do {
                     try FileManager.default.removeItem(atPath: storePath)
                     do {
-                        try self.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: options)
+                        try self.addPersistentStore(ofType: type, configurationName: nil, at: storeURL, options: options)
                     } catch let addPersistentError as NSError {
                         throw NSError(info: "There was an error creating the persistentStoreCoordinator", previousError: addPersistentError)
                     }
