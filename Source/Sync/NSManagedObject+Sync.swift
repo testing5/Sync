@@ -317,7 +317,7 @@ extension NSManagedObject {
                     // is of type Date, then we need to convert the array of strings in the JSON to be an array of dates.
                     // More info: https://github.com/3lvis/Sync/pull/477
                     let ids = childrenIDs.compactMap { value(forAttributeDescription: primaryKeyAttribute, usingRemoteValue: $0) }
-                    childPredicate = NSPredicate(format: "ANY %K IN %@ OR %K = %@", entity.sync_localPrimaryKey(), ids, inverseEntityName, self)
+                    childPredicate = NSPredicate(format: "ANY %K IN %@ AND %K = %@", entity.sync_localPrimaryKey(), ids, inverseEntityName, self)
                 }
             }
 
