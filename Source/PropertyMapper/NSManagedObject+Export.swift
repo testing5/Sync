@@ -26,7 +26,7 @@ public struct ExportOptions {
     public var dateFormatter: DateFormatter
 
     public init() {
-        self.inflectionType = .snakeCase
+        self.inflectionType = .camelCase
         self.relationshipType = .array
         self.dateFormatter = .default()
     }
