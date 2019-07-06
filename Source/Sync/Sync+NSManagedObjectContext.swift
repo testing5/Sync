@@ -14,11 +14,11 @@ extension NSManagedObjectContext {
         Sync.changes(changes, inEntityNamed: entityName, predicate: nil, parent: nil, parentRelationship: nil, inContext: self, operations: .all, completion: completion)
     }
 
-    public func changes(_ changes: [[String: Any]], inEntityNamed entityName: String, predicate: NSPredicate?, parent: NSManagedObject?, parentRelationship: NSRelationshipDescription?, operations: Sync.OperationOptions, completion: ((_ error: NSError?) -> Void)?) {
+    public func changes(_ changes: [[String: Any]], inEntityNamed entityName: String, predicate: NSPredicate?, parent: NSManagedObject?, parentRelationship: NSRelationshipDescription?, operations: Sync.OperationOptions, objectJSONBlock: ((_ objectJSON: [String: Any]) -> [String: Any])?, completion: ((_ error: NSError?) -> Void)?) {
 
         var error: NSError?
         do {
-            try Sync.changes(changes, inEntityNamed: entityName, predicate: predicate, parent: parent, parentRelationship: parentRelationship, inContext: self, operations: operations, shouldContinueBlock: nil, objectJSONBlock: nil)
+            try Sync.changes(changes, inEntityNamed: entityName, predicate: predicate, parent: parent, parentRelationship: parentRelationship, inContext: self, operations: operations, shouldContinueBlock: nil, objectJSONBlock: objectJSONBlock)
         } catch let syncError as NSError {
             error = syncError
         }
