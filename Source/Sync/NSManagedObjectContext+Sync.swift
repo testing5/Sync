@@ -35,7 +35,7 @@ public extension NSManagedObjectContext {
 
         self.performAndWait {
             let expression = NSExpressionDescription()
-            expression.name = "objectID"
+            expression.name = entityName
             expression.expression = NSExpression.expressionForEvaluatedObject()
             expression.expressionResultType = .objectIDAttributeType
 
@@ -48,7 +48,7 @@ public extension NSManagedObjectContext {
                 let objects = try self.fetch(request)
                 for object in objects {
                     let fetchedID = object[attributeName] as! NSObject
-                    let objectID = object["objectID"] as! NSManagedObjectID
+                    let objectID = object[entityName] as! NSManagedObjectID
 
                     if let _ = result[fetchedID] {
                         self.delete(self.object(with: objectID))
