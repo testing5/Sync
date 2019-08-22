@@ -307,7 +307,8 @@ import EncryptedCoreData
                 self.persistentStoreCoordinator.performAndWait {
                     for store in self.persistentStoreCoordinator.persistentStores {
                         guard let storeURL = store.url else { continue }
-                        try! self.oldDrop(storeURL: storeURL)
+                        //try! self.oldDrop(storeURL: storeURL)
+                        try! self.persistentStoreCoordinator.destroyPersistentStore(at: storeURL, ofType: storeType.type, options: nil)
                     }
                     
                     DispatchQueue.main.async {
@@ -473,7 +474,7 @@ extension NSPersistentStoreCoordinator {
 }
 
 extension NSManagedObjectModel {
-    convenience init(bundle: Bundle, name: String) {
+    convenience public init(bundle: Bundle, name: String) {
         if let momdModelURL = bundle.url(forResource: name, withExtension: "momd") {
             self.init(contentsOf: momdModelURL)!
         } else if let momModelURL = bundle.url(forResource: name, withExtension: "mom") {
